@@ -1,0 +1,48 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+    {% if title %} {{ title }} {% else %} Welcome to Battery Application {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+
+    <div class="container">
+        <div class="navbar-header">
+            <buttom type="button" class="navbar-toggle collapsed" data-toggled="collapse" data-target="#bs-example-navbar-collapse-1" aria-expaned="false">
+                <span class="st-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </buttom>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Battery App</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_new') }}">Add new</a></li>
+                <li><a href="{{ url_for('change_status') }}">Change Status</a></li>
+                <li><a href="{{ url_for('update_status') }}">Update Status</a></li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+    {% block app_content %}  {% endblock %}
+
+    </div>
+{% endblock %}
+
+</body>
+</html>

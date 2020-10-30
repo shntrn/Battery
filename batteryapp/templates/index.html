@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Battery Application</h1>
+    <h2> Batteries: </h2>
+    <table class="table table-hover">
+    <tr>
+        <td width="140px">Battery Number </td>
+        <td width="140px">Room</td>
+        <td width="140px">Status </td>
+        <td width="140px">Capacity</td>
+        <td width="300pd">Last Update</td>
+    </tr>
+    </table>
+    {% for battery in batteries %}
+        {% include '_battery.html' %}
+    {% endfor %}
+{% endblock %}
